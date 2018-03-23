@@ -20,18 +20,6 @@ if (!isset($_SESSION['twitter']))
     $_SESSION['twitter'] = new TwitterAPIExchange($_SESSION['settings']);
 }
 
-/*
-$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-$getfield = '?screen_name=ClickHole';
-$requestMethod = 'GET';
-
-$response = $_SESSION['twitter']->setGetfield($getfield)
-    ->buildOauth($url, $requestMethod)
-    ->performRequest();
-
-echo $response;
-*/
-
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];
     $action = $_GET['action'];

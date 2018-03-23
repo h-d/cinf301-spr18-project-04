@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Renderer as Renderer;
-use App\Models\Algorithm as Algorithm;
+use App\Models\Users as User;
 
 /**
  * AlgorithmsController class that accesses data from the
@@ -11,13 +11,13 @@ use App\Models\Algorithm as Algorithm;
  * @author dplante
  *
  */
-class AlgorithmsController
+class UserController
 {
     public function index()
     {
-        $algorithms = Algorithm::complete();
-        $view = new Renderer('views/algorithms/');
-        $view->algorithms = $algorithms;
+        $users = User::complete();
+        $view = new Renderer('views/users/');
+        $view->users = $users;
         $view->render('index.php');
     }
 
@@ -26,9 +26,9 @@ class AlgorithmsController
         if (!isset($_GET['id']))
             $this->index();
 
-        $algorithm = Algorithm::find($_GET['id']);
-        $view = new Renderer('views/algorithms/');
-        $view->algorithm = $algorithm;
+        $users = User::find($_GET['id']);
+        $view = new Renderer('views/users/');
+        $view->users = $users;
         $view->render('show.php');
     }
 }
