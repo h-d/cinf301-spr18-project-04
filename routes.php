@@ -13,11 +13,11 @@ function route($controller, $action) {
         case 'users':
             $controller = new App\Controllers\UserController();
             break;
-        case 'tweets':
-            $controller = new App\Controllers\TweetController();
-            break;
         case 'hashtags':
             $controller = new App\Controllers\HashtagController();
+            break;
+        case 'followers':
+            $controller = new App\Controllers\FollowerController();
             break;
     }
 
@@ -26,8 +26,8 @@ function route($controller, $action) {
 
   $controllers = array( 'main' => ['home', 'error'],
                         'users' => ['index', 'show'],
-                        'tweets' => ['index', 'show'],
-                        'hashtags' => ['index', 'show']);
+                        'hashtags' => ['index', 'show'],
+                        'followers' => ['index', 'show']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

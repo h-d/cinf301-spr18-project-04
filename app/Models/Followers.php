@@ -11,14 +11,14 @@ namespace App\Models;
  *
  */
 
-class Hashtags
+class Followers
 {
 
 
     public static function complete()
     {
-        $url = 'https://api.twitter.com/1.1/search/tweets.json';
-        $getfield = '?q=%23test-filter:retweets';
+        $url = 'https://api.twitter.com/1.1/followers/list.json';
+        $getfield = '?screen_name=Twitter&skip_status=true';
         $requestMethod = 'GET';
         $response = $_SESSION['twitter']->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
@@ -26,17 +26,17 @@ class Hashtags
 
         $json_output = json_decode($response, true);
 
-        $hashtags = array();
+        $followers = array();
 
-        foreach ($json_output as $hashtag )
+        foreach ($json_output as $follower )
         {
-            if (is_array($hashtag)) {
-                foreach ($hashtag as $unique_hashtag) {
-                    $hashtags[] = $unique_hashtag;
+            if (is_array($follower)) {
+                foreach ($follower as $unique_follower) {
+                    $followers[] = $unique_follower;
                 }
             }
         }
-        return $hashtags;
+        return $followers;
     }
 
     /**

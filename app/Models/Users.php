@@ -21,7 +21,7 @@ class Users
     public static function complete()
     {
         $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-        $getfield = '?screen_name=ClickHole';
+        $getfield = '?screen_name=Twitter';
         $requestMethod = 'GET';
         $response = $_SESSION['twitter']->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
@@ -47,31 +47,23 @@ class Users
      */
     public static function find($id)
     {
-        $algorithms = array(
-            array(
-                'id' => 1,
-                'algorithm' => 'Bubble Sort',
-                'ranking' => 999
-            ),
-            array(
-                'id' => 2,
-                'algorithm' => 'Insertion Sort',
-                'ranking' => 5
-            ),
-            array(
-                'id' => 3,
-                'algorithm' => 'Merge Sort',
-                'ranking' => 2
-            )
-        );
+        $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $getfield = '?screen_name='.$id;
+        $requestMethod = 'GET';
+        $response = $_SESSION['twitter']->setGetfield($getfield)
+            ->buildOauth($url, $requestMethod)
+            ->performRequest();
 
-        foreach ($algorithms as $algorithm) {
-            if ($algorithm['id'] == $id) {
-                return $algorithm;
-            }
+        $json_output = json_decode($response, true);
+
+        $statuses = array();
+
+        foreach ($json_output as $status )
+        {
+            $statuses[] = $status;
         }
 
-        return $algorithms[0];
+        return $statuses;
     }
 
 }

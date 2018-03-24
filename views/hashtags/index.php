@@ -1,14 +1,16 @@
-<h2>The hashtags are:</h2>
+<h2>The tweets are:</h2>
 <table>
   <tr>
     <th>Test</th>
     <th>Selection</th>
   </tr>
-    <?php foreach($this->hashtags as $hashtag) { ?>
+    <?php foreach($this->hashtags as $status) {
+        if (is_array($status)) {?>
         <tr>
-            <td><?=$hashtag['user']['screen_name'] ?></td>
-            <td><?=$hashtag['text']?></td>
-            <td><?=$hashtag['created_at']?></td>
+            <td><?=$status['user']['screen_name'] ?></td>
+            <td><?=$status['text']?></td>
+            <td><?=$status['created_at']?></td>
         </tr>
-    <?php } ?>
+    <?php }
+    } ?>
 </table>

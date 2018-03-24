@@ -23,12 +23,9 @@ class UserController
 
     public function show()
     {
-        if (!isset($_GET['id']))
-            $this->index();
-
-        $users = User::find($_GET['id']);
-        $view = new Renderer('views/users/');
-        $view->users = $users;
-        $view->render('show.php');
+            $users = User::find($_COOKIE['Search']);
+            $view = new Renderer('views/users/');
+            $view->users = $users;
+            $view->render('show.php');
     }
 }

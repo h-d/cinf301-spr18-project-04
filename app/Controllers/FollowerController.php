@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\Tweets as Tweet;
+use App\Models\Followers as Hashtag;
 use App\Renderer as Renderer;
 
 /**
@@ -11,13 +11,13 @@ use App\Renderer as Renderer;
  * @author dplante
  *
  */
-class TweetController
+class FollowerController
 {
     public function index()
     {
-        $tweets = Tweet::complete();
-        $view = new Renderer('views/tweets/');
-        $view->tweets = $tweets;
+        $followers = Hashtag::complete();
+        $view = new Renderer('views/followers/');
+        $view->followers = $followers;
         $view->render('index.php');
     }
 
@@ -26,9 +26,9 @@ class TweetController
         if (!isset($_GET['id']))
             $this->index();
 
-        $tweets = Tweet::find($_GET['id']);
-        $view = new Renderer('views/tweets/');
-        $view->tweets = $tweets;
+        $followers = Hashtag::find($_GET['id']);
+        $view = new Renderer('views/followers/');
+        $view->followers = $followers;
         $view->render('show.php');
     }
 }

@@ -28,7 +28,7 @@ class HashtagController
 
         $hashtags = Hashtag::find($_GET['id']);
         $view = new Renderer('views/hashtags/');
-        $view->hashtags = $hashtags;
+        $view->hashtag = $hashtags;
         $view->render('show.php');
     }
 }

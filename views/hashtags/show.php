@@ -1,4 +1,4 @@
-<h2>Hashtag Details:</h2>
+<h2>Tweet Details:</h2>
 
 <table>
   <tr>
@@ -6,7 +6,7 @@
     <th>Ranking</th>
   </tr>
   <tr>
-    <td><?=$this->hashtags['algorithm']?></td>
-    <td><?=$this->hashtags['ranking']?></td>
+    <td><?=$this->tweets['algorithm']?></td>
+    <td><?=$this->tweets['ranking']?></td>
   </tr>
 </table>

@@ -1,0 +1,45 @@
+/*!
+ * Start Bootstrap - Logo Nav (https://startbootstrap.com/template-overviews/logo-nav)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logo-nav/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+.container-fluid
+{
+  padding: 54px;
+}
+
+.input-group
+{
+  padding: 54px;
+}
+
+.add-on .input-group-btn > .btn {
+  border-left-width:0;left:-2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  border-color:#cccccc;
+}
+.form-control{width:20%}
+
+.navbar-nav > li > a {
+  border-right: 1px solid #ddd;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.navbar-nav:last-child{ border-right:0}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
