@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
-
+//Hudson DeVoe (kind of)
+//Users class uses given id var for j7mbo's twitter api to return tweets by a specific user
 
 
 /**
@@ -14,46 +15,22 @@ namespace App\Models;
 class Users
 {
     /**
-     * Return all of the stored data
-     *
-     * @return number[][]|string[][]
-     */
-    public static function complete()
-    {
-        $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-        $getfield = '?screen_name=Twitter';
-        $requestMethod = 'GET';
-        $response = $_SESSION['twitter']->setGetfield($getfield)
-            ->buildOauth($url, $requestMethod)
-            ->performRequest();
-
-        $json_output = json_decode($response, true);
-
-        $statuses = array();
-
-        foreach ($json_output as $status )
-        {
-            $statuses[] = $status;
-        }
-
-        return $statuses;
-    }
-
-    /**
-     * Access only a single "record" of data for the given id (or index)
-     *
-     * @param int $id
-     * @return number[]|string[]
+     * Access the statuses of a user with the given $id (username)
      */
     public static function find($id)
     {
+        //gets url and adds the $id
         $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
         $getfield = '?screen_name='.$id;
+
+        //uses the j7mbo twitter API to get a json response
         $requestMethod = 'GET';
         $response = $_SESSION['twitter']->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
             ->performRequest();
 
+
+        //decodes json output and puts each status into an array of statuses, returning the status data
         $json_output = json_decode($response, true);
 
         $statuses = array();

@@ -1,13 +1,17 @@
+<!--Hudson DeVoe
+    Show tweets for given user-->
+
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+    <input type="text" class="form-control" placeholder="@realDonaldTrump, @ClickHole, etc." name="srch-term" id="srch-term">
     <div class="input-group-btn">
-        <a class="nav-link" href="?controller=users&action=show"><button class="btn btn-default" type="submit" id="button">Users</button></a>
+        <a class="nav-link" href="?controller=users&action=show"><button class="btn btn-default" type="submit" id="button">Search Users</button></a>
     </div>
 </div>
 <h2>Tweets from <?=$_COOKIE['Search']?>:</h2>
 <hr>
 <?php
-    if (count($this->users) > 1)
+//Creates cards for each tweet in the users array
+    if (count($this->users) > 5)
     {
         foreach($this->users as $users) {
             if (is_array($users)) { ?>

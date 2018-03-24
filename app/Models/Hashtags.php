@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
-
+//Hudson DeVoe (kind of)
+//Users class uses given id var for j7mbo's twitter api to return tweets for a specific hashtag
 
 
 /**
@@ -13,17 +14,25 @@ namespace App\Models;
 
 class Hashtags
 {
-
-
-    public static function complete()
+    /**
+     * Access only a single "record" of data for the given id (or index)
+     *
+     * @param int $id
+     * @return number[]|string[]
+     */
+    public static function find($id)
     {
+        //gets url and adds the $id
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
-        $getfield = '?q=%23test-filter:retweets';
+        $getfield = '?q=%23' . $id . '-filter:retweets';
+
+        //uses the j7mbo twitter API to get a json response
         $requestMethod = 'GET';
         $response = $_SESSION['twitter']->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
             ->performRequest();
 
+        //decodes json output and puts each status into an array of statuses, returning the status data
         $json_output = json_decode($response, true);
 
         $hashtags = array();
@@ -37,41 +46,6 @@ class Hashtags
             }
         }
         return $hashtags;
-    }
-
-    /**
-     * Access only a single "record" of data for the given id (or index)
-     *
-     * @param int $id
-     * @return number[]|string[]
-     */
-    public static function find($id)
-    {
-        $algorithms = array(
-            array(
-                'id' => 1,
-                'hashtags' => 'Bubble Sort',
-                'ranking' => 999
-            ),
-            array(
-                'id' => 2,
-                'hashtags' => 'Insertion Sort',
-                'ranking' => 5
-            ),
-            array(
-                'id' => 3,
-                'hashtags' => 'Merge Sort',
-                'ranking' => 2
-            )
-        );
-
-        foreach ($algorithms as $algorithm) {
-            if ($algorithm['id'] == $id) {
-                return $algorithm;
-            }
-        }
-
-        return $algorithms[0];
     }
 
 }

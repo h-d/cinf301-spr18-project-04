@@ -1,3 +1,7 @@
+/*Hudson DeVoe
+  Script for putting text field data into a search cookie on button click
+ */
+
 window.onload = function() {
 
     const button = document.getElementById('button');

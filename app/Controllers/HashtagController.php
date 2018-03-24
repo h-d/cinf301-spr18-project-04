@@ -4,31 +4,26 @@ use App\Models\Hashtags as Hashtag;
 use App\Renderer as Renderer;
 
 /**
- * AlgorithmsController class that accesses data from the
- * Algorithm model class and passes it to a rendering class
+ * HashtagController class that accesses data from the
+ * Hashtags model class and passes it to a rendering class
  * to be rendered as a view.
  * 
- * @author dplante
+ * @author hdevoe
  *
  */
 class HashtagController
 {
     public function index()
     {
-        $hashtags = Hashtag::complete();
         $view = new Renderer('views/hashtags/');
-        $view->hashtags = $hashtags;
         $view->render('index.php');
     }
 
     public function show()
     {
-        if (!isset($_GET['id']))
-            $this->index();
-
-        $hashtags = Hashtag::find($_GET['id']);
+        $hashtags = Hashtag::find($_COOKIE['Search']);
         $view = new Renderer('views/hashtags/');
-        $view->hashtag = $hashtags;
+        $view->hashtags = $hashtags;
         $view->render('show.php');
     }
 }

@@ -4,29 +4,24 @@ use App\Models\Followers as Hashtag;
 use App\Renderer as Renderer;
 
 /**
- * AlgorithmsController class that accesses data from the
- * Algorithm model class and passes it to a rendering class
+ * FollowerController class that accesses data from the
+ * Followers model class and passes it to a rendering class
  * to be rendered as a view.
- * 
- * @author dplante
+ *
+ * @author hdevoe
  *
  */
 class FollowerController
 {
     public function index()
     {
-        $followers = Hashtag::complete();
         $view = new Renderer('views/followers/');
-        $view->followers = $followers;
         $view->render('index.php');
     }
 
     public function show()
     {
-        if (!isset($_GET['id']))
-            $this->index();
-
-        $followers = Hashtag::find($_GET['id']);
+        $followers = Hashtag::find($_COOKIE['Search']);
         $view = new Renderer('views/followers/');
         $view->followers = $followers;
         $view->render('show.php');

@@ -1,9 +1,15 @@
 <?php
+/*Hudson DeVoe
+ *Main page for Twitter project
+ */
+
+//Requires
 require_once __DIR__ . '/vendor/autoload.php';
 
 require_once('vendor/j7mbo/twitter-api-php/TwitterAPIExchange.php');
 require_once('config.inc.php');
 
+//Sets session settings from given config file
 if(!isset($_SESSION['settings']))
 {
     $_SESSION['settings'] = array(
@@ -14,11 +20,12 @@ if(!isset($_SESSION['settings']))
 
 }
 
-
+//creates twitter session variable using session settings
 if (!isset($_SESSION['twitter']))
 {
     $_SESSION['twitter'] = new TwitterAPIExchange($_SESSION['settings']);
 }
+
 
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];
@@ -29,7 +36,7 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
 }
 ?>
 
-
+<!--HTML for site; linking in bootstrap, scripts, and the layout.php file-->
 <!DOCTYPE html>
 <html lang="en">
 
